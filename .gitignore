@@ -33,6 +33,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+## Xcode ##
+xcuserdata/
+
 ## Databases, etc ##
 *.json
 *.pot
