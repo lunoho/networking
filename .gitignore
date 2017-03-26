@@ -1,0 +1,48 @@
+## Java/Android and Jetbrains IDEs: ##
+.idea/*
+.idea_modules/
+*.ipr
+*.iws
+build/
+dist/
+bin/
+gen/
+.gradle
+/local.properties
+
+## Python ##
+*.pyo
+__pycache__/
+*.log
+
+
+## OS X ##
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Databases, etc ##
+*.json
+*.pot
+*.sqlite*
+*.log
+
+## Local Ignores ##
+media/
+local_settings.py
+.idea/misc.xml
+DownSHFT-android.iml
+app/app.iml
+inspectionProfiles
