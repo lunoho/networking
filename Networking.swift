@@ -5,7 +5,6 @@
 //  Created by Luke Garner on 7/21/16.
 //  Copyright © 2016 Amalgamated Bitpushers. All rights reserved.
 //
-// hmm
 import Foundation
 
 public enum Result<T> {
