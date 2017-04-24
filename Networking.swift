@@ -65,7 +65,6 @@ public extension JSONConstructableHTTPRequest {
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         }
         request.httpMethod = method.rawValue
-        print(request.allHTTPHeaderFields!)
         return request
     }
 }
