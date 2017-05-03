@@ -6,6 +6,7 @@
 //  Copyright © 2016 Amalgamated Bitpushers. All rights reserved.
 //
 import Foundation
+import UIKit
 
 public enum Result<T> {
     case Success(T)
@@ -137,6 +138,15 @@ public extension JSONDictParsing {
         guard let deserializedData = try? JSONSerialization.jsonObject(with: data, options: []) else { return nil }
         guard let deserialzedArray = deserializedData as? [AnyObject] else { return nil }
         return JSONType.construct(deserialzedArray)
+    }
+}
+
+public protocol ImageParsing: ResultParsing {
+    func parseData(_ data: Data) -> UIImage?
+}
+public extension ImageParsing {
+    func parseData(_ data: Data) -> UIImage? {
+        return UIImage(data: data)
     }
 }
 
