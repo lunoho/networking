@@ -34,14 +34,14 @@ public protocol HTTPRequest {
     var baseURL: URL? { get }
     var method: HTTPMethod { get }
     var accept_header: String? { get }
-    var path: String { get }
+    var basePath: String { get }
     var parameters: Dictionary<String, String> { get }
     var headers: Dictionary<String, String> { get }
 }
 
 public extension HTTPRequest {
     var method : HTTPMethod { return .GET }
-    var path : String { return "" }
+    var basePath : String { return "" }
     var accept_header: String? { return nil }
     var parameters : Dictionary<String, String> { return Dictionary() }
     var headers : Dictionary<String, String> { return Dictionary() }
@@ -56,7 +56,7 @@ public extension JSONConstructableHTTPRequest {
     func buildRequest() -> URLRequest? {
         guard let baseURL = baseURL else { return nil }
         guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else { return nil }
-        urlComponents.path = urlComponents.path + path
+        urlComponents.path = urlComponents.path + basePath
         guard let URL = urlComponents.url else { return nil }
         var request = URLRequest(url: URL)
         if (accept_header != nil) {
