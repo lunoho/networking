@@ -33,7 +33,6 @@ public let ENCODING = String.Encoding.utf8
 public protocol HTTPRequest {
     var baseURL: URL? { get }
     var method: HTTPMethod { get }
-    var accept_header: String? { get }
     var basePath: String { get }
     var parameters: Dictionary<String, String> { get }
     var headers: Dictionary<String, String> { get }
@@ -42,7 +41,6 @@ public protocol HTTPRequest {
 public extension HTTPRequest {
     var method : HTTPMethod { return .GET }
     var basePath : String { return "" }
-    var accept_header: String? { return nil }
     var parameters : Dictionary<String, String> { return Dictionary() }
     var headers : Dictionary<String, String> { return Dictionary() }
 }
@@ -58,13 +56,17 @@ public extension JSONConstructableHTTPRequest {
         guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else { return nil }
         urlComponents.path = urlComponents.path + basePath
         guard let URL = urlComponents.url else { return nil }
+        
         var request = URLRequest(url: URL)
-        if (accept_header != nil) {
-            request.addValue(accept_header!, forHTTPHeaderField: "Accept")
+        
+        for (headerField, value) in headers {
+            request.addValue(value, forHTTPHeaderField: headerField)
         }
-        if method != .GET {
+        
+        if method == .POST {
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         }
+        
         request.httpMethod = method.rawValue
         return request
     }
