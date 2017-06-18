@@ -204,5 +204,5 @@ public extension MockSendableRequest where ParsedType: Mockable {
 // **************************
 // **      CONVENIENCE     **
 // **************************
-public protocol Requestable: HTTPRequest, JSONConstructableHTTPRequest, SendableHTTPRequest, DataSource {}
-public protocol MockRequestable: MockSendableRequest, DataSource {}
+public protocol Requestable: JSONConstructableHTTPRequest, SendableHTTPRequest {}
+public protocol MockRequestable: MockSendableRequest {}
