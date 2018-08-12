@@ -98,7 +98,7 @@ public protocol JSONConstructable {
 }
 public extension JSONConstructable {
     static func construct(_ objects: [AnyObject]) -> [Self]? {
-        return objects.flatMap { self.construct($0) }
+        return objects.compactMap { self.construct($0) }
     }
 }
 
